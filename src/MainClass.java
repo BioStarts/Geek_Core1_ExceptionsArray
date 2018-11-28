@@ -1,17 +1,16 @@
 import java.util.Arrays;
-
 public class MainClass {
     public static void main(String[] args) {
-        String[][] arr = new String[][]{{"3","1","1","1"},{"1","c","1","3"}};
+        String[][] arr = new String[][]{{"3","1","c","1"},{"1","7","1","3"}};
         parse(arr);
-
     }
-
     public static void parse(String[][] args) {
         System.out.println("--------------1---------------");
         int x = args.length;
         int arr1 = 0;
         int arr2 = 0;
+        int arr11 = 0;
+        int arr22 = 0;
         System.out.println(x + " - размерность масива");
         System.out.println(args[0].length + " - объем первого массива");
         System.out.println(args[1].length + " - объем второго массива");
@@ -38,15 +37,16 @@ public class MainClass {
                      ) {
                     arr2++;
                     try {sum += Integer.parseInt(b);} catch (RuntimeException e){
-                        throw new MyArrayDataException(arr1,arr2);
+                        arr11 = arr1;
+                        arr22 = arr2;
                         //throw new MyArrayDataException(Arrays.asList(args).indexOf(b));  //Пожалуйста расскажите возможно ли было решить 2е задание таким способом ???
                     }
-                    /*finally {
-                        System.out.println("Сумма: " + sum);
-                    }*/
                 }
             }
             System.out.println("Сумма: " + sum);
+        }
+        if (arr11 != 0) {
+            throw new MyArrayDataException(arr11, arr22);
         }
 
     }
